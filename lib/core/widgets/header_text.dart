@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/core.dart';
 
-import '../util/util.dart';
 
 class HeaderText extends StatelessWidget {
   final String text;

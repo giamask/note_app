@@ -11,8 +11,6 @@ class AppScheme {
     onSecondary: Color(0xffffffff),
     error: Color(0xff790000),
     onError: Color(0xffffffff),
-    background: Color(0xfff8f8fd),
-    onBackground: Color(0xff090909),
     surface: Color(0xfff8f8fd),
     onSurface: Color(0xff090909),
   );
@@ -25,8 +23,6 @@ class AppScheme {
     onSecondary: Color(0xff0c1414),
     error: Color(0xff9b374d),
     onError: Color(0xff10080a),
-    background: Color(0xff1c191d),
-    onBackground: Color(0xffedeced),
     surface: Color(0xff1c191d),
     onSurface: Color(0xffedeced),
   );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/core.dart';
 
-import '../../core.dart';
 
 abstract class ColorNote {
   ColorNote._();
@@ -12,8 +12,8 @@ abstract class ColorNote {
   static List<Color> allColorsNote(BuildContext context) {
     final Brightness appBrightness = context.colorScheme.brightness;
     return appBrightness == Brightness.light
-        ? [context.colorScheme.background, ..._lightColorCard]
-        : [context.colorScheme.background, ..._darkColorCard];
+        ? [context.colorScheme.surface, ..._lightColorCard]
+        : [context.colorScheme.surface, ..._darkColorCard];
   }
 
   static final List<Color> _lightColorCard = [

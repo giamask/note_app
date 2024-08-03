@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/core.dart';
 
-import '/core/util/util.dart';
 import 'linear_color_picker.dart';
 
 class PopoverColoringNote extends StatelessWidget {

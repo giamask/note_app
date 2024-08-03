@@ -26,7 +26,7 @@ class AppAlerts {
           backgroundColor: context.colorScheme.primaryContainer,
           action: onPressed != null
               ? SnackBarAction(
-                  textColor: context.colorScheme.onBackground,
+                  textColor: context.colorScheme.onSurface,
                   label: actionLabel!,
                   onPressed: onPressed,
                 )

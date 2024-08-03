@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/core/util/extensions/extensions.dart';
+import 'package:note_app/core/core.dart';
 
 class CommonBottomAppBar extends StatelessWidget {
   final double? height;
@@ -24,8 +24,8 @@ class CommonBottomAppBar extends StatelessWidget {
         shape: const CircularNotchedRectangle(),
         elevation: isShowFAB ? 3 : 0,
         color: !isShowFAB
-            ? context.colorScheme.background.withOpacity(0)
-            : context.colorScheme.background,
+            ? context.colorScheme.surface.withOpacity(0)
+            : context.colorScheme.surface,
         child: child,
       ),
     );

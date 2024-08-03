@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/core/util/util.dart';
+import 'package:note_app/core/core.dart';
 
 class TilesSection extends StatelessWidget {
   const TilesSection({super.key, required this.title, required this.tiles});
