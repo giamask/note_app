@@ -46,14 +46,14 @@ Future<void> init() async {
   );
 
   //=> Datasourse
-  gI.registerLazySingleton<NoteLocalDataSourse>(
+  gI.registerLazySingleton<NoteLocalDataSource>(
     () => NoteLocalDataSourceWithHiveImpl(),
   );
 
-  await gI<NoteLocalDataSourse>().initDb();
+  await gI<NoteLocalDataSource>().initDb();
 
   //! Core !//
-  //! External!//
+  //! External !//
   final sharedPreferences = await SharedPreferences.getInstance();
   gI.registerLazySingleton(() => sharedPreferences);
   //

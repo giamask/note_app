@@ -8,7 +8,7 @@ import '../note_local_data_source.dart';
 import '../../../model/note_model.dart';
 import 'state_note_hive.dart';
 
-class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSourse {
+class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
   final String _boxNote = 'note_box';
   @override
   Future<bool> initDb() async {
@@ -26,7 +26,7 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSourse {
   }
 
   @override
-  Future<List<NoteModel>> getAllNote() async {
+  Future<List<NoteModel>> getAllNotes() async {
     try {
       final noteBox = Hive.box<NoteHive>(_boxNote);
 

@@ -8,7 +8,7 @@ class AppTheme {
 
   static ThemeData light = FlexThemeData.light(
     // colorScheme: AppScheme.flexSchemeLight,
-    scheme: FlexScheme.green,
+    scheme: FlexScheme.blumineBlue,
 
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     appBarOpacity: 0.00,
@@ -44,7 +44,7 @@ class AppTheme {
 
   static final dark = FlexThemeData.dark(
     //colorScheme: AppScheme.flexSchemeDark,
-    //scheme: FlexScheme.ebonyClay,
+    // scheme: FlexScheme.ebonyClay,
     scheme: FlexScheme.green,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     appBarOpacity: 0.00,

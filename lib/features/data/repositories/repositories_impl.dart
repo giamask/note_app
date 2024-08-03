@@ -7,7 +7,7 @@ import '../datasources/local/note_local_data_source.dart';
 import '../model/note_model.dart';
 
 class NoteRepositoriesImpl implements NoteRepositories {
-  final NoteLocalDataSourse noteLocalDataSourse;
+  final NoteLocalDataSource noteLocalDataSourse;
 
   NoteRepositoriesImpl({
     required this.noteLocalDataSourse,
@@ -16,7 +16,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
   @override
   Future<Either<Failure, List<Note>>> getAllNotes() async {
     try {
-      final response = await noteLocalDataSourse.getAllNote();
+      final response = await noteLocalDataSourse.getAllNotes();
       return Right(response);
     } on NoDataException {
       return Left(NoDataFailure());
