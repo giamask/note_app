@@ -5,21 +5,35 @@ import '../../features/presentation/pages/home/widgets/widgets.dart';
 import '../core.dart';
 
 class CommonNotesView extends StatelessWidget {
-  const CommonNotesView({
-    Key? key,
-    required this.drawerSection,
-    required this.otherNotes,
-    required this.pinnedNotes,
-  }) : super(key: key);
+  const CommonNotesView(
+      {Key? key,
+      required this.drawerSection,
+      required this.otherNotes,
+      required this.pinnedNotes,
+      this.decorativeImage})
+      : super(key: key);
 
   final DrawerSectionView drawerSection;
   final List<Note> otherNotes;
   final List<Note> pinnedNotes;
+  final String? decorativeImage;
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: _switchNotesSectionView(drawerSection, otherNotes, pinnedNotes),
+    return Container(
+      decoration: decorativeImage != null
+          ? BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(decorativeImage!),
+                  fit: BoxFit.scaleDown,
+                  scale: 0.55,
+                  opacity: 0.12),
+            )
+          : null,
+      child: CustomScrollView(
+        slivers:
+            _switchNotesSectionView(drawerSection, otherNotes, pinnedNotes),
+      ),
     );
   }
 

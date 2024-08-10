@@ -41,6 +41,7 @@ class HomePage extends StatelessWidget {
               drawerSection: DrawerSectionView.home,
               otherNotes: state.otherNotes,
               pinnedNotes: state.pinnedNotes,
+              decorativeImage: 'assets/image/elephant_bg.png',
             ),
           );
         }

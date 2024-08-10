@@ -34,6 +34,7 @@ class ArchivePage extends StatelessWidget {
             drawerSection: DrawerSectionView.archive,
             otherNotes: state.otherNotes,
             pinnedNotes: const [],
+            decorativeImage: 'assets/image/elephant_bg.png',
           );
         }
         return const SizedBox.shrink();

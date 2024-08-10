@@ -31,10 +31,11 @@ Widget _buildBody(BuildContext context) {
       } else if (state is ErrorState) {
         return CommonEmptyNotes(state.drawerSectionView);
       } else if (state is NotesViewState) {
-        return CommonNotesView(
+        return CommonNotesView(   
           drawerSection: DrawerSectionView.trash,
           otherNotes: state.otherNotes,
           pinnedNotes: const [],
+          decorativeImage: 'assets/image/elephant_bg.png',
         );
       }
       return const SizedBox.shrink();
