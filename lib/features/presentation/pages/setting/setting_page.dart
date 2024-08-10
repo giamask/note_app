@@ -8,10 +8,10 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Setting')),
+      appBar: AppBar(title: const Text('Settings')),
       body: const Sections(
         sections: [
-          TilesSection(title: 'Dispaly option', tiles: [ThemesItemTile()]),
+          TilesSection(title: 'Display option', tiles: [ThemesItemTile()]),
         ],
       ),
     );

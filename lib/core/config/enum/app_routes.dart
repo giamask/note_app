@@ -13,7 +13,7 @@ enum AppRouterName {
   archive(name: 'Archive', path: '/Archive'),
   trash(name: 'Trash', path: '/Trash'),
 
-  setting(name: 'Setting', path: 'setting');
+  setting(name: 'Settings', path: 'setting');
 
   const AppRouterName({required this.name, required this.path});
 

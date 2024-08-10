@@ -35,7 +35,7 @@ extension DrawerViewsExtensions on DrawerViews {
       case DrawerViews.trash:
         return 'Trash';
       case DrawerViews.setting:
-        return 'Setting';
+        return 'Settings';
     }
   }
 

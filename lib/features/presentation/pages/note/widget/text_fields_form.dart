@@ -27,6 +27,7 @@ class TextFieldsForm extends StatelessWidget {
           textStyle: context.textTheme.headlineSmall!.copyWith(
             fontWeight: FontWeight.bold,
           ),
+          autofocus: true,
         ),
         const SizedBox(height: 10),
         CommonTextField(
