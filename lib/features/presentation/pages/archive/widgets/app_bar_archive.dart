@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
@@ -8,7 +9,7 @@ class AppBarAchive extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Archive'),
+      title: const Text('Archive').tr(),
       actions: [
         IconButton(
           onPressed: () => _showSearch(context),

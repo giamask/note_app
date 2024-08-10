@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/app/app.dart';
 import 'package:note_app/app/di/get_it.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Future.wait([di.init()]);
   runApp(const NoteApp());
 }

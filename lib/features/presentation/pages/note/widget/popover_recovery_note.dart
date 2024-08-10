@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -20,12 +21,12 @@ class PopoverRecoveryNote extends StatelessWidget {
         children: [
           ListTile(
             leading: AppIcons.restoreNote,
-            title: const Text('Restore'),
+            title: const Text('Restore').tr(),
             onTap: () => _onRestoreNote(context),
           ),
           ListTile(
             leading: AppIcons.deleteNote,
-            title: const Text('Delete foverver'),
+            title: const Text('Delete foverver').tr(),
             onTap: () => AppAlerts.showAlertDeleteDialog(context, note),
           ),
         ],

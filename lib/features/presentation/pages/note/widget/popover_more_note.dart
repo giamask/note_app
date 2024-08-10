@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,12 +20,12 @@ class PopoverMoreNote extends StatelessWidget {
         children: [
           ListTile(
             leading: AppIcons.trashNote,
-            title: const Text('Trash'),
+            title: const Text('Trash').tr(),
             onTap: () => _onTrashNote(context),
           ),
           ListTile(
             leading: AppIcons.sendNote,
-            title: const Text('Send'),
+            title: const Text('Send').tr(),
             onTap: () {},
           ),
         ],

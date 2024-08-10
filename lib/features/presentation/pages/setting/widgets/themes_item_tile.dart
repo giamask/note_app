@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/presentation/blocs/blocs.dart';
@@ -17,7 +18,7 @@ class ThemesItemTile extends StatelessWidget {
           (appTheme) => appTheme.mode == currentTheme,
         );
         return ListTile(
-          title: const Text('Themes'),
+          title: const Text('Themes').tr(),
           trailing: Text(
             selectedTheme.title,
             style: context.textTheme.bodyLarge,
@@ -35,7 +36,7 @@ class ThemesItemTile extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           contentPadding: const EdgeInsets.symmetric(vertical: 20),
-          title: const Text('Choose Theme'),
+          title: const Text('Choose Theme').tr(),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
