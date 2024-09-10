@@ -24,12 +24,15 @@ class NoteHive extends HiveObject {
   @HiveField(5)
   StateNoteHive stateNoteHive;
 
-  NoteHive({
-    required this.id,
-    required this.title,
-    required this.content,
-    required this.colorIndex,
-    required this.modifiedTime,
-    required this.stateNoteHive,
-  });
+  @HiveField(6)
+  List<String>? imagePaths;
+
+  NoteHive(
+      {required this.id,
+      required this.title,
+      required this.content,
+      required this.colorIndex,
+      required this.modifiedTime,
+      required this.stateNoteHive,
+      this.imagePaths = const []});
 }

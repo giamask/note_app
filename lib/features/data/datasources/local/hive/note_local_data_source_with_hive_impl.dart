@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/core.dart';
@@ -33,13 +35,13 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       final List<NoteModel> resultNotes = noteBox.values
           .map(
             (note) => NoteModel(
-              id: note.id,
-              title: note.title,
-              content: note.content,
-              colorIndex: note.colorIndex,
-              modifiedTime: note.modifiedTime,
-              stateNote: note.stateNoteHive.stateNote,
-            ),
+                id: note.id,
+                title: note.title,
+                content: note.content,
+                colorIndex: note.colorIndex,
+                modifiedTime: note.modifiedTime,
+                stateNote: note.stateNoteHive.stateNote,
+                imagePaths: note.imagePaths),
           )
           .toList();
       return resultNotes;
@@ -58,13 +60,13 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       );
 
       return NoteModel(
-        id: resultNote.id,
-        title: resultNote.title,
-        content: resultNote.content,
-        colorIndex: resultNote.colorIndex,
-        modifiedTime: resultNote.modifiedTime,
-        stateNote: resultNote.stateNoteHive.stateNote,
-      );
+          id: resultNote.id,
+          title: resultNote.title,
+          content: resultNote.content,
+          colorIndex: resultNote.colorIndex,
+          modifiedTime: resultNote.modifiedTime,
+          stateNote: resultNote.stateNoteHive.stateNote,
+          imagePaths: resultNote.imagePaths);
     } catch (_) {
       throw NoDataException();
     }
@@ -77,13 +79,13 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       final noteKey = noteModel.id;
 
       final NoteHive noteHive = NoteHive(
-        id: noteModel.id,
-        title: noteModel.title,
-        content: noteModel.content,
-        colorIndex: noteModel.colorIndex,
-        modifiedTime: noteModel.modifiedTime,
-        stateNoteHive: noteModel.stateNote.stateNoteHive,
-      );
+          id: noteModel.id,
+          title: noteModel.title,
+          content: noteModel.content,
+          colorIndex: noteModel.colorIndex,
+          modifiedTime: noteModel.modifiedTime,
+          stateNoteHive: noteModel.stateNote.stateNoteHive,
+          imagePaths: noteModel.imagePaths);
       await noteBox.put(noteKey, noteHive);
       return unit;
     } catch (_) {
@@ -97,14 +99,23 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       final noteBox = Hive.box<NoteHive>(_boxNote);
       final indexNoteId = noteModel.id;
 
+      final previousNote = noteBox.get(indexNoteId);
+
+      for (final path in previousNote?.imagePaths ?? []) {
+        if (noteModel.imagePaths != null &&
+            !noteModel.imagePaths!.contains(path)) {
+          await File(path).delete();
+        }
+      }
+
       final NoteHive noteHive = NoteHive(
-        id: noteModel.id,
-        title: noteModel.title,
-        content: noteModel.content,
-        colorIndex: noteModel.colorIndex,
-        modifiedTime: noteModel.modifiedTime,
-        stateNoteHive: noteModel.stateNote.stateNoteHive,
-      );
+          id: noteModel.id,
+          title: noteModel.title,
+          content: noteModel.content,
+          colorIndex: noteModel.colorIndex,
+          modifiedTime: noteModel.modifiedTime,
+          stateNoteHive: noteModel.stateNote.stateNoteHive,
+          imagePaths: noteModel.imagePaths);
       await noteBox.put(indexNoteId, noteHive);
       return unit;
     } catch (_) {
@@ -116,6 +127,13 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
   Future<Unit> deleteNote(String noteModelId) async {
     try {
       final noteBox = Hive.box<NoteHive>(_boxNote);
+      final imagesPaths = noteBox.get(noteModelId)?.imagePaths;
+      //Delete images as well
+      if (imagesPaths != null) {
+        for (var imagePath in imagesPaths) {
+          await File(imagePath).delete();
+        }
+      }
       await noteBox.delete(noteModelId);
       return unit;
     } catch (_) {

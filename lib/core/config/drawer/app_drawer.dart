@@ -47,7 +47,7 @@ class AppDrawer extends StatelessWidget {
         TextSpan(
           children: [
             TextSpan(
-              text: 'KeepUp Note',
+              text: 'Name placeholder',
               style: const TextStyle().copyWith(fontWeight: FontWeight.bold),
             ),
             const TextSpan(text: ' '),

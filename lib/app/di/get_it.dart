@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,6 +30,7 @@ Future<void> init() async {
 
   gI.registerFactory(() => StatusIconsCubit());
   gI.registerFactory(() => StatusGridCubit());
+  gI.registerFactory(() => PicturesCubit());
   gI.registerFactory(() => ProfileCubit(sharedPreferences: gI()));
   gI.registerFactory(() => ThemeCubit(sharedPreferences: gI()));
   gI.registerFactory(() => SearchCubit(getNotes: gI()));

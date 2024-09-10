@@ -145,6 +145,13 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
     if (_isNewNote && isNoteEmpty) {
       // New note is empty, emit an empty input state
+      if (currentNote.images.isNotEmpty) {
+        for (var image in currentNote.images) {
+          if (image.existsSync()) {
+            image.delete();
+          }
+        }
+      }
       add(EmptyInputs());
     } else if (_isNewNote || (!_isNewNote && isDirty)) {
       // Existing note is dirty, update the note

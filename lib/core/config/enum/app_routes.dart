@@ -9,6 +9,8 @@ enum AppRouterName {
   add(name: 'note', path: 'note/new'),
   //Note Detail
   note(name: 'note', path: 'note/:noteId'),
+
+  imagePreview(name: 'Image preview', path: 'image'),
   //=>
   archive(name: 'Archive', path: '/Archive'),
   trash(name: 'Trash', path: '/Trash'),

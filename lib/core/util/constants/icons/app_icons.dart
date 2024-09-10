@@ -45,6 +45,7 @@ class AppIcons {
   static const restoreNote = Icon(Icons.restore);
 
   static const themes = Icon(Icons.color_lens_outlined);
+  static const scanDocument = Icon(Icons.document_scanner_outlined);
 
   // Empty Notes
   static const emptySearch = Icon(Icons.search, size: 100);

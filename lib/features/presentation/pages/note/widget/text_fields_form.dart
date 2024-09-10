@@ -30,13 +30,15 @@ class TextFieldsForm extends StatelessWidget {
           autofocus: true,
         ),
         const SizedBox(height: 10),
-        CommonTextField(
-          hintText: 'Note',
-          controller: controllerContent,
-          hintStyle: context.textTheme.bodyLarge,
-          textStyle: context.textTheme.bodyLarge,
-          undoController: undoController,
-          autofocus: autofocus,
+        Expanded(
+          child: CommonTextField(
+            hintText: 'Note',
+            controller: controllerContent,
+            hintStyle: context.textTheme.bodyLarge,
+            textStyle: context.textTheme.bodyLarge,
+            undoController: undoController,
+            autofocus: autofocus,
+          ),
         ),
       ],
     );

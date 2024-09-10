@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/note.dart';
@@ -31,18 +32,19 @@ class _NotePageState extends State<NotePage> {
 
   Note get originNote {
     return Note(
-      id: widget.note.id,
-      title: widget.note.title,
-      content: widget.note.content,
-      modifiedTime: widget.note.modifiedTime,
-      colorIndex: widget.note.colorIndex,
-      stateNote: widget.note.stateNote,
-    );
+        id: widget.note.id,
+        title: widget.note.title,
+        content: widget.note.content,
+        modifiedTime: widget.note.modifiedTime,
+        colorIndex: widget.note.colorIndex,
+        stateNote: widget.note.stateNote,
+        images: widget.note.images);
   }
 
   Note get currentNote {
     final noteBloc = context.read<NoteBloc>();
     final noteStatusBloc = context.read<StatusIconsCubit>();
+    final imagesCubit = context.read<PicturesCubit>();
     //==>
     final StatusNote currentStatusNote =
         noteStatusBloc.state is ToggleIconsStatusState
@@ -50,17 +52,18 @@ class _NotePageState extends State<NotePage> {
             : StatusNote.trash;
     //==>
     return Note(
-      id: widget.note.id,
-      title: _titleController.text,
-      content: _contentController.text,
-      modifiedTime: widget.note.modifiedTime,
-      colorIndex: noteBloc.currentColor,
-      stateNote: currentStatusNote,
-    );
+        id: widget.note.id,
+        title: _titleController.text,
+        content: _contentController.text,
+        modifiedTime: widget.note.modifiedTime,
+        colorIndex: noteBloc.currentColor,
+        stateNote: currentStatusNote,
+        images: imagesCubit.state.files);
   }
 
   @override
   void initState() {
+    context.read<PicturesCubit>().initializePictures(widget.note.images);
     _loadNoteFields();
     super.initState();
   }
@@ -74,6 +77,7 @@ class _NotePageState extends State<NotePage> {
   void dispose() {
     _titleController.dispose();
     _contentController.dispose();
+    if (context.mounted) context.read<PicturesCubit>().reset();
     super.dispose();
   }
 
@@ -98,15 +102,40 @@ class _NotePageState extends State<NotePage> {
 
   Widget _buildBody() {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: TextFieldsForm(
-          controllerTitle: _titleController,
-          controllerContent: _contentController,
-          undoController: _undoController,
-          autofocus: false,
-        ),
+        child: Scrollbar(
+      child: CustomScrollView(
+        slivers: [
+          SliverGrid(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200.0,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 0.7,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return GestureDetector(
+                    onTap: () => context.pushNamed(
+                        AppRouterName.imagePreview.name,
+                        pathParameters: {"noteId": widget.note.id.toString()},
+                        extra: {"index": index.toString()}),
+                    child: Image(image: FileImage(currentNote.images[index])));
+              },
+              childCount: currentNote.images.length,
+            ),
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: TextFieldsForm(
+              controllerTitle: _titleController,
+              controllerContent: _contentController,
+              undoController: _undoController,
+              autofocus: false,
+            ),
+          ),
+        ],
       ),
-    );
+    ));
   }
 
   Future<bool> _onBack() async {

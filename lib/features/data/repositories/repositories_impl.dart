@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import '../../../core/util/util.dart';
@@ -17,7 +19,19 @@ class NoteRepositoriesImpl implements NoteRepositories {
   Future<Either<Failure, List<Note>>> getAllNotes() async {
     try {
       final response = await noteLocalDataSourse.getAllNotes();
-      return Right(response);
+      final notes = response
+          .map((x) => Note(
+                id: x.id,
+                title: x.title,
+                content: x.content,
+                colorIndex: x.colorIndex,
+                modifiedTime: x.modifiedTime,
+                stateNote: x.stateNote,
+                images: x.imagePaths?.map((x) => File(x)).toList() ?? [],
+              ))
+          .toList();
+
+      return Right(notes);
     } on NoDataException {
       return Left(NoDataFailure());
     }
@@ -27,7 +41,16 @@ class NoteRepositoriesImpl implements NoteRepositories {
   Future<Either<Failure, Note>> getNoteById(String noteId) async {
     try {
       final response = await noteLocalDataSourse.getNoteById(noteId);
-      return Right(response);
+      final Note convertToNote = Note(
+        id: response.id,
+        title: response.title,
+        content: response.content,
+        colorIndex: response.colorIndex,
+        modifiedTime: response.modifiedTime,
+        stateNote: response.stateNote,
+        images: response.imagePaths?.map((x) => File(x)).toList() ?? [],
+      );
+      return Right(convertToNote);
     } on NoDataException {
       return Left(NoDataFailure());
     }
@@ -46,6 +69,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
           colorIndex: note.colorIndex,
           modifiedTime: note.modifiedTime,
           stateNote: note.stateNote,
+          imagePaths: note.images.map((x) => x.path).toList(),
         );
         await noteLocalDataSourse.addNote(convertToNoteModel);
         return const Right(unit);
@@ -59,13 +83,13 @@ class NoteRepositoriesImpl implements NoteRepositories {
   Future<Either<Failure, Unit>> updateNote(Note note) async {
     try {
       final NoteModel convertToNoteModel = NoteModel(
-        id: note.id,
-        title: note.title,
-        content: note.content,
-        colorIndex: note.colorIndex,
-        modifiedTime: note.modifiedTime,
-        stateNote: note.stateNote,
-      );
+          id: note.id,
+          title: note.title,
+          content: note.content,
+          colorIndex: note.colorIndex,
+          modifiedTime: note.modifiedTime,
+          stateNote: note.stateNote,
+          imagePaths: note.images.map((x) => x.path).toList());
       await noteLocalDataSourse.updateNote(convertToNoteModel);
       return const Right(unit);
     } on NoDataException {

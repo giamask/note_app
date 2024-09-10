@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/core.dart';
 import 'package:note_app/app/di/get_it.dart' as di;
+import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
 
 import '../../features/presentation/blocs/blocs.dart';
 
@@ -26,6 +27,7 @@ class AppProviders extends StatelessWidget {
         BlocProvider(create: (_) => di.gI<ProfileCubit>()),
         BlocProvider(create: (_) => di.gI<SearchCubit>()),
         BlocProvider(create: (_) => di.gI<ThemeCubit>()..getCurrentThemeMode()),
+        BlocProvider(create: (_) => di.gI<PicturesCubit>()),
       ],
       child: child,
     );

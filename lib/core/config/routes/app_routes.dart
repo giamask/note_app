@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/features/presentation/pages/note/widget/image_preview_carousel.dart';
 import '../../../features/domain/entities/note.dart';
 import '../../../features/presentation/pages/views.dart';
 import '../enum/enum.dart';
@@ -32,6 +33,18 @@ abstract class AppRouter {
                 ),
               );
             },
+            routes: [
+              GoRoute(
+                name: AppRouterName.imagePreview.name,
+                path: AppRouterName.imagePreview.path,
+                pageBuilder: (context, state) {
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: ImagePreviewCarousel(index: (state.extra as Map)['index'] as String),
+                  );
+                },
+              ),
+            ],
           ),
           GoRoute(
             name: AppRouterName.setting.name,

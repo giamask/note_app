@@ -1,5 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
+import 'package:note_app/features/presentation/pages/note/widget/scan_doc_icon_note.dart';
+import 'package:cunning_document_scanner/cunning_document_scanner.dart';
+import 'package:path_provider/path_provider.dart';
 import '../../../../../core/core.dart';
 import '../../../../domain/entities/note.dart';
 import './widgets.dart';
@@ -47,10 +53,31 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ColorIconNote(
-            press: () =>
-                _showModalBottomSheet(sheetPopoverType: SheetPopover.coloring),
-          ),
+          Row(children: [
+            ColorIconNote(
+              press: () => _showModalBottomSheet(
+                  sheetPopoverType: SheetPopover.coloring),
+            ),
+            ScanDocIconNote(
+              press: () async {
+                try {
+                  final imagePath = await CunningDocumentScanner.getPictures();
+                  if (imagePath?.isEmpty ?? true) return;
+                  final cacheFile = File(imagePath!.first);
+                  final appDir = await getApplicationDocumentsDirectory();
+
+                  final newFile = await cacheFile.copy(
+                      "${appDir.path}/${cacheFile.uri.pathSegments.last}");
+                  await cacheFile.delete();
+                  if (newFile.existsSync() && context.mounted) {
+                    context.read<PicturesCubit>().addPicture(newFile);
+                  }
+                } catch (_) {
+                  throw NoDataException();
+                }
+              },
+            )
+          ]),
           isShowUndoRedo
               ? UndoRedoButtons(undoController: widget.undoController)
               : Text(
