@@ -21,7 +21,7 @@ class PopoverMoreNote extends StatelessWidget {
         children: [
           ListTile(
             leading: AppIcons.trashNote,
-            title: const Text('Trash').tr(),
+            title: const Text('Delete').tr(),
             onTap: () => _onTrashNote(context),
           ),
           ListTile(

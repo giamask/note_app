@@ -57,10 +57,7 @@ class AppIcons {
   static const error = Icon(Icons.error_outline_outlined, size: 150);
 
   static final List<String> profiles = [
-    'assets/image/profile_1.png',
-    'assets/image/profile_2.png',
-    'assets/image/profile_3.png',
-    'assets/image/profile_4.png',
-    'assets/image/profile_5.png',
+    'assets/image/dog.jpg',
+    'assets/image/rabbit.jpg',
   ];
 }
