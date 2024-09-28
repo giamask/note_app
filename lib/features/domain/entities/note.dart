@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
+import 'package:note_app/features/domain/entities/reminder.dart';
 
 import '../../../core/core.dart';
 
@@ -12,6 +13,7 @@ class Note extends Equatable {
   final int colorIndex;
   final StatusNote stateNote;
   final List<File> images;
+  final List<Reminder> reminders;
 
   const Note(
       {required this.id,
@@ -20,6 +22,7 @@ class Note extends Equatable {
       required this.colorIndex,
       required this.modifiedTime,
       required this.stateNote,
+      required this.reminders,
       this.images = const []});
 
   // Define the copyWith method here
@@ -30,17 +33,18 @@ class Note extends Equatable {
     DateTime? modifiedTime,
     int? colorIndex,
     StatusNote? statusNote,
+    List<Reminder>? reminders,
     List<File>? images,
   }) {
     return Note(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      content: content ?? this.content,
-      colorIndex: colorIndex ?? this.colorIndex,
-      modifiedTime: modifiedTime ?? this.modifiedTime,
-      stateNote: statusNote ?? stateNote,
-      images: images ?? this.images,
-    );
+        id: id ?? this.id,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        colorIndex: colorIndex ?? this.colorIndex,
+        modifiedTime: modifiedTime ?? this.modifiedTime,
+        stateNote: statusNote ?? stateNote,
+        images: images ?? this.images,
+        reminders: reminders ?? this.reminders);
   }
 
   Note.empty({
@@ -50,6 +54,7 @@ class Note extends Equatable {
     DateTime? modifiedTime,
     this.colorIndex = 0,
     this.stateNote = StatusNote.undefined,
+    this.reminders = const [],
     this.images = const [],
   })  : id = id ?? UUIDGen.generate(),
         modifiedTime = modifiedTime ?? DateTime.now();
@@ -62,6 +67,7 @@ class Note extends Equatable {
         colorIndex,
         modifiedTime,
         stateNote,
+        ...reminders.map((x) => x.id),
         ...(images.map((x) => x.hashCode))
       ];
 }

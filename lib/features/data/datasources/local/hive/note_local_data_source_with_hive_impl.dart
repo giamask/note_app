@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/core.dart';
+import 'package:note_app/features/data/datasources/local/hive/reminder_hive.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'note_hive.dart';
@@ -19,10 +20,12 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       Hive.init(appDocumentDir.path);
       Hive.registerAdapter(NoteHiveAdapter());
       Hive.registerAdapter(StateNoteHiveAdapter());
+      Hive.registerAdapter(ReminderHiveAdapter());
 
       await Hive.openBox<NoteHive>(_boxNote);
       return true;
     } catch (_) {
+      print(_);
       throw ConnectionException();
     }
   }
@@ -41,6 +44,7 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
                 colorIndex: note.colorIndex,
                 modifiedTime: note.modifiedTime,
                 stateNote: note.stateNoteHive.stateNote,
+                reminders: note.reminders.map((r) => r.reminder).toList(),
                 imagePaths: note.imagePaths),
           )
           .toList();
@@ -66,6 +70,7 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
           colorIndex: resultNote.colorIndex,
           modifiedTime: resultNote.modifiedTime,
           stateNote: resultNote.stateNoteHive.stateNote,
+          reminders: resultNote.reminders.map((r) => r.reminder).toList(),
           imagePaths: resultNote.imagePaths);
     } catch (_) {
       throw NoDataException();
@@ -85,6 +90,7 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
           colorIndex: noteModel.colorIndex,
           modifiedTime: noteModel.modifiedTime,
           stateNoteHive: noteModel.stateNote.stateNoteHive,
+          reminders: noteModel.reminders.map((r) => r.reminderHive).toList(),
           imagePaths: noteModel.imagePaths);
       await noteBox.put(noteKey, noteHive);
       return unit;
@@ -115,6 +121,9 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
           colorIndex: noteModel.colorIndex,
           modifiedTime: noteModel.modifiedTime,
           stateNoteHive: noteModel.stateNote.stateNoteHive,
+          reminders: noteModel.reminders
+              .map((reminder) => reminder.reminderHive)
+              .toList(),
           imagePaths: noteModel.imagePaths);
       await noteBox.put(indexNoteId, noteHive);
       return unit;

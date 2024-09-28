@@ -28,7 +28,7 @@ class NoteApp extends StatelessWidget {
                   supportedLocales: context.supportedLocales,
                   locale: context.locale,
                   debugShowCheckedModeBanner: false,
-                  title: 'Note App Version 2',
+                  title: 'NS Agenda',
                   theme: AppTheme.light,
                   darkTheme: AppTheme.dark,
                   themeMode: state.themeMode,

@@ -34,7 +34,7 @@ class ArchivePage extends StatelessWidget {
             drawerSection: DrawerSectionView.archive,
             otherNotes: state.otherNotes,
             pinnedNotes: const [],
-            decorativeImage: 'assets/image/elephant_bg.png',
+            decorativeImage: 'assets/image/transparent_hedge.png',
           );
         }
         return const SizedBox.shrink();
@@ -58,6 +58,7 @@ class ArchivePage extends StatelessWidget {
   void _getNoteByIdState(BuildContext context, Note note) {
     context.read<StatusIconsCubit>().toggleIconsStatus(note);
     context.read<NoteBloc>().add(ModifColorNote(note.colorIndex));
+    context.read<NoteBloc>().add(ModifRemindersNote(note.reminders));
     context.pushNamed(
       AppRouterName.note.name,
       pathParameters: {'noteId': note.id},

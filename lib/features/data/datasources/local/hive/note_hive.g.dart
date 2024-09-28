@@ -16,6 +16,10 @@ class NoteHiveAdapter extends TypeAdapter<NoteHive> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
+    List reminders = [];
+    if (fields[7] != null) {
+      reminders = fields[7];
+    }
     return NoteHive(
       id: fields[0] as String,
       title: fields[1] as String,
@@ -23,6 +27,7 @@ class NoteHiveAdapter extends TypeAdapter<NoteHive> {
       colorIndex: fields[3] as int,
       modifiedTime: fields[4] as DateTime,
       stateNoteHive: fields[5] as StateNoteHive,
+      reminders: (reminders).cast<ReminderHive>(),
       imagePaths: (fields[6] as List?)?.cast<String>(),
     );
   }
@@ -30,7 +35,7 @@ class NoteHiveAdapter extends TypeAdapter<NoteHive> {
   @override
   void write(BinaryWriter writer, NoteHive obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -43,6 +48,8 @@ class NoteHiveAdapter extends TypeAdapter<NoteHive> {
       ..write(obj.modifiedTime)
       ..writeByte(5)
       ..write(obj.stateNoteHive)
+      ..writeByte(7)
+      ..write(obj.reminders)
       ..writeByte(6)
       ..write(obj.imagePaths);
   }

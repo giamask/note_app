@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
               drawerSection: DrawerSectionView.home,
               otherNotes: state.otherNotes,
               pinnedNotes: state.pinnedNotes,
-              decorativeImage: 'assets/image/elephant_bg.png',
+              decorativeImage: 'assets/image/transparent_hedge.png',
             ),
           );
         }
@@ -68,6 +68,7 @@ class HomePage extends StatelessWidget {
   void _getNoteByIdState(BuildContext context, Note note) {
     context.read<StatusIconsCubit>().toggleIconsStatus(note);
     context.read<NoteBloc>().add(ModifColorNote(note.colorIndex));
+    context.read<NoteBloc>().add(ModifRemindersNote(note.reminders));
     context.pushNamed(
       AppRouterName.note.name,
       pathParameters: {'noteId': note.id},

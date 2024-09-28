@@ -39,7 +39,7 @@ class AppTheme {
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     swapLegacyOnMaterial3: true,
-    fontFamily: GoogleFonts.dekko().fontFamily,
+    fontFamily: GoogleFonts.interTight().fontFamily,
   );
 
   static final dark = FlexThemeData.dark(
@@ -73,6 +73,6 @@ class AppTheme {
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
     swapLegacyOnMaterial3: true,
-    fontFamily: GoogleFonts.dekko().fontFamily,
+    fontFamily: GoogleFonts.interTight().fontFamily,
   );
 }

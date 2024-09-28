@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/features/data/datasources/local/hive/reminder_hive.dart';
+import 'package:note_app/features/domain/entities/reminder.dart';
 
 import '../../../features/data/datasources/local/hive/state_note_hive.dart';
 import '../../../features/presentation/blocs/blocs.dart';
@@ -127,5 +129,14 @@ extension StatusHiveNoteX on StateNoteHive {
       case StateNoteHive.trash:
         return StatusNote.trash;
     }
+  }
+}
+
+extension ReminderHiveX on ReminderHive {
+  Reminder get reminder {
+    return Reminder(
+      id: id,
+      dateTime: dateTime,
+    );
   }
 }

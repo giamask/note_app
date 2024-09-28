@@ -35,6 +35,8 @@ class AppIcons {
   static const more = Icon(Icons.more_vert_outlined);
   static const drawColor = Icon(Icons.color_lens_outlined);
 
+  static const addReminder = Icon(Icons.notification_add_outlined);
+
   static const defuaulCheckColor = Icon(Icons.format_color_reset_outlined);
   static const check = Icon(Icons.check_rounded, color: Colors.blueAccent);
 
@@ -58,6 +60,8 @@ class AppIcons {
 
   static final List<String> profiles = [
     'assets/image/dog.jpg',
+    'assets/image/elephant.png',
     'assets/image/rabbit.jpg',
+    'assets/image/hedge_avatar.jpeg',
   ];
 }

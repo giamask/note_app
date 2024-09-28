@@ -18,7 +18,7 @@ class CommonEmptyNotes extends StatelessWidget {
           onRefresh: () => AppFunction.onRefresh(context),
           child: _emptySection(
             AppIcons.emptyNote,
-            'Note you add appear here',
+            'Notes you add appear here',
           ),
         );
       case DrawerSectionView.archive:

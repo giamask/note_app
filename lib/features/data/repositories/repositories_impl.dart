@@ -27,6 +27,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
                 colorIndex: x.colorIndex,
                 modifiedTime: x.modifiedTime,
                 stateNote: x.stateNote,
+                reminders: x.reminders,
                 images: x.imagePaths?.map((x) => File(x)).toList() ?? [],
               ))
           .toList();
@@ -48,6 +49,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
         colorIndex: response.colorIndex,
         modifiedTime: response.modifiedTime,
         stateNote: response.stateNote,
+        reminders: response.reminders,
         images: response.imagePaths?.map((x) => File(x)).toList() ?? [],
       );
       return Right(convertToNote);
@@ -69,6 +71,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
           colorIndex: note.colorIndex,
           modifiedTime: note.modifiedTime,
           stateNote: note.stateNote,
+          reminders: note.reminders,
           imagePaths: note.images.map((x) => x.path).toList(),
         );
         await noteLocalDataSourse.addNote(convertToNoteModel);
@@ -89,6 +92,7 @@ class NoteRepositoriesImpl implements NoteRepositories {
           colorIndex: note.colorIndex,
           modifiedTime: note.modifiedTime,
           stateNote: note.stateNote,
+          reminders: note.reminders,
           imagePaths: note.images.map((x) => x.path).toList());
       await noteLocalDataSourse.updateNote(convertToNoteModel);
       return const Right(unit);

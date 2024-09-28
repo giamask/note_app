@@ -40,6 +40,16 @@ final class ModifedColorNoteState extends NoteState {
   List<Object> get props => [colorIndex];
 }
 
+final class ModifiedRemindersState extends NoteState {
+  final List<Reminder> reminders;
+
+  const ModifiedRemindersState(
+    this.reminders,
+  );
+  @override
+  List<Object> get props => reminders.map((x) => x.id).toList();
+}
+
 final class GetNoteByIdState extends NoteState {
   final Note note;
 

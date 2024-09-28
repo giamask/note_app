@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/features/domain/entities/reminder.dart';
 import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
+import 'package:note_app/features/presentation/pages/note/widget/reminder_chip_list.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/note.dart';
@@ -25,6 +27,10 @@ class _NotePageState extends State<NotePage> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
   final _undoController = UndoHistoryController();
+  List<Reminder> get reminders {
+    final noteBloc = context.read<NoteBloc>();
+    return noteBloc.currentReminders;
+  }
 
   Color get noteColor {
     final noteBloc = context.read<NoteBloc>();
@@ -39,7 +45,8 @@ class _NotePageState extends State<NotePage> {
         modifiedTime: widget.note.modifiedTime,
         colorIndex: widget.note.colorIndex,
         stateNote: widget.note.stateNote,
-        images: widget.note.images);
+        images: widget.note.images,
+        reminders: widget.note.reminders);
   }
 
   Note get currentNote {
@@ -59,6 +66,7 @@ class _NotePageState extends State<NotePage> {
         modifiedTime: widget.note.modifiedTime,
         colorIndex: noteBloc.currentColor,
         stateNote: currentStatusNote,
+        reminders: reminders,
         images: imagesCubit.state.files);
   }
 
@@ -66,6 +74,7 @@ class _NotePageState extends State<NotePage> {
   void initState() {
     context.read<PicturesCubit>().initializePictures(widget.note.images);
     _loadNoteFields();
+
     super.initState();
   }
 
@@ -125,6 +134,14 @@ class _NotePageState extends State<NotePage> {
                     child: Image(image: FileImage(currentNote.images[index])));
               },
               childCount: currentNote.images.length,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ReminderChipList(reminders: reminders);
+              },
+              childCount: reminders.isNotEmpty ? 1 : 0,
             ),
           ),
           SliverFillRemaining(

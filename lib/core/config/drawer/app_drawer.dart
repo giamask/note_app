@@ -47,11 +47,11 @@ class AppDrawer extends StatelessWidget {
         TextSpan(
           children: [
             TextSpan(
-              text: 'Name placeholder',
+              text: 'NS',
               style: const TextStyle().copyWith(fontWeight: FontWeight.bold),
             ),
             const TextSpan(text: ' '),
-            const TextSpan(text: 'Note'),
+            const TextSpan(text: 'Agenda'),
           ],
         ),
       ),

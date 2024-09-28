@@ -16,5 +16,6 @@ class NoteModel extends Note {
       required super.colorIndex,
       required super.modifiedTime,
       required super.stateNote,
+      required super.reminders,
       this.imagePaths});
 }

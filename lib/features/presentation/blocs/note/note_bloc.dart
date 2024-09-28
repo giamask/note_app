@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/features/domain/entities/reminder.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/note.dart';
@@ -35,6 +36,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     on<DeleteNote>(_onDeleteNote);
     on<RefreshNotes>(_onRefreshNotes);
     on<ModifColorNote>(_onModifColorNote);
+    on<ModifRemindersNote>(_onModifRemindersNote);
     on<EmptyInputs>(_onEmptyInputs);
     //Action Event
     on<MoveNote>(_onMoveNote);
@@ -46,7 +48,9 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
   bool _isNewNote = false;
 
   int _colorIndex = 0;
+  List<Reminder> _reminders = [];
   int get currentColor => _colorIndex;
+  List<Reminder> get currentReminders => _reminders;
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   GlobalKey<ScaffoldState> get appScaffoldState => _key;
@@ -129,6 +133,11 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     emit(ModifedColorNoteState(_colorIndex));
   }
 
+  _onModifRemindersNote(ModifRemindersNote event, Emitter<NoteState> emit) {
+    _reminders = event.reminders;
+    emit(ModifiedRemindersState(_reminders));
+  }
+
   _onPopNoteAction(PopNoteAction event, Emitter<NoteState> emit) async {
     final Note currentNote = event.currentNote;
     final Note originNote = event.originNote;
@@ -157,7 +166,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       // Existing note is dirty, update the note
       _isNewNote ? add(AddNote(currentNote)) : add(UpdateNote(updatedNote));
     }
-
+    _reminders = [];
     // Notify to close the details page
     emit(GoPopNoteState());
   }

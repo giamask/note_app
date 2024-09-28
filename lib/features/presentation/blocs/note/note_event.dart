@@ -83,6 +83,16 @@ final class ModifColorNote extends NoteEvent {
   List<Object> get props => [colorIndex];
 }
 
+final class ModifRemindersNote extends NoteEvent {
+  final List<Reminder> reminders;
+
+  const ModifRemindersNote(
+    this.reminders,
+  );
+  @override
+  List<Object> get props => reminders.map((x) => x.id).toList();
+}
+
 final class MoveNote extends NoteEvent {
   final Note? note;
   final StatusNote newStatus;

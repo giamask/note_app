@@ -31,11 +31,11 @@ Widget _buildBody(BuildContext context) {
       } else if (state is ErrorState) {
         return CommonEmptyNotes(state.drawerSectionView);
       } else if (state is NotesViewState) {
-        return CommonNotesView(   
+        return CommonNotesView(
           drawerSection: DrawerSectionView.trash,
           otherNotes: state.otherNotes,
           pinnedNotes: const [],
-          decorativeImage: 'assets/image/elephant_bg.png',
+          decorativeImage: 'assets/image/transparent_hedge.png',
         );
       }
       return const SizedBox.shrink();
@@ -57,6 +57,7 @@ void _displayNotesMsg(BuildContext context, NoteState state) {
 void _getNoteByIdState(BuildContext context, Note note) {
   context.read<StatusIconsCubit>().toggleIconsStatus(note);
   context.read<NoteBloc>().add(ModifColorNote(note.colorIndex));
+  context.read<NoteBloc>().add(ModifRemindersNote(note.reminders));
   context.pushNamed(
     AppRouterName.note.name,
     pathParameters: {'noteId': note.id},
