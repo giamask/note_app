@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/core.dart';
 
@@ -15,7 +16,7 @@ class HeaderText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(text, style: context.textTheme.titleSmall),
+            Text(text, style: context.textTheme.titleSmall).tr(),
           ],
         ),
       ),

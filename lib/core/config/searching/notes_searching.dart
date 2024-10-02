@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +9,7 @@ import '../../util/util.dart';
 
 class NotesSearching extends SearchDelegate {
   @override
-  String? get searchFieldLabel => 'Search your notes';
+  String? get searchFieldLabel => tr('Search your notes');
 
   @override
   TextStyle? get searchFieldStyle => const TextStyle().copyWith(fontSize: 18.0);
@@ -78,7 +79,7 @@ class NotesSearching extends SearchDelegate {
         SliverFillRemaining(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [AppIcons.emptySearch, Text(meassge)],
+            children: [AppIcons.emptySearch, Text(meassge).tr()],
           ),
         ),
       ],
@@ -91,7 +92,7 @@ class NotesSearching extends SearchDelegate {
         SliverFillRemaining(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [AppIcons.error, Text(meassge)],
+            children: [AppIcons.error, Text(meassge).tr()],
           ),
         ),
       ],

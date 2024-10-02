@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,7 @@ class AppAlerts {
       ..removeCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
-          content: Text(message, style: context.textTheme.bodyMedium),
+          content: Text(message, style: context.textTheme.bodyMedium).tr(),
           duration: const Duration(seconds: 2),
           behavior: SnackBarBehavior.floating,
           backgroundColor: context.colorScheme.primaryContainer,
@@ -71,14 +72,14 @@ class AppAlerts {
     Note note,
   ) async {
     Widget cancelButton = TextButton(
-      child: const Text('NO'),
+      child: const Text('NO').tr(),
       onPressed: () {
         context.pop();
         context.pop();
       },
     );
     Widget deleteButton = TextButton(
-      child: const Text('YES'),
+      child: const Text('YES').tr(),
       onPressed: () {
         context.pop();
         context.pop();
@@ -88,7 +89,7 @@ class AppAlerts {
     );
     AlertDialog alert = AlertDialog(
       backgroundColor: ColorNote.getColor(context, note.colorIndex),
-      content: const Text('Are you sure you want to delete this Note?'),
+      content: const Text('Are you sure you want to delete this Note?').tr(),
       actions: [
         deleteButton,
         cancelButton,

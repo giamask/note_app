@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/core.dart';
 
@@ -29,7 +30,7 @@ class CommonEmptyNotes extends StatelessWidget {
       case DrawerSectionView.trash:
         return _emptySection(
           AppIcons.emptyTrashNote,
-          'No Notes in Recycle Bin',
+          'No notes in the trash',
         );
     }
   }
@@ -38,7 +39,7 @@ class CommonEmptyNotes extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [appIcons, const SizedBox(height: 5.0), Text(errorMsg)],
+        children: [appIcons, const SizedBox(height: 5.0), Text(errorMsg).tr()],
       ),
     );
   }

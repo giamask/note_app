@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/core.dart';
 
@@ -23,7 +24,7 @@ class TilesSection extends StatelessWidget {
               title,
               style: context.textTheme.bodyMedium!
                   .copyWith(fontWeight: FontWeight.bold),
-            ),
+            ).tr(),
           ),
         ),
         ...tiles

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/presentation/blocs/blocs.dart';
@@ -29,7 +30,7 @@ class CommonSearchBar extends StatelessWidget {
                       icon: AppIcons.menu,
                       onPressed: () => _openDrawer(context),
                     ),
-                    Text(hintText, style: context.textTheme.bodyLarge),
+                    Text(hintText, style: context.textTheme.bodyLarge).tr(),
                   ],
                 ),
                 const Row(

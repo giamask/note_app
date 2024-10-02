@@ -19,7 +19,7 @@ class ImagePreviewBar extends StatelessWidget implements PreferredSizeWidget {
     const leadingIcon = AppIcons.arrowBack;
 
     return AppBar(
-      title: Text('${index + 1} of $total').tr(),
+      title: Text('${index + 1} ${tr('of')} $total'),
       leading: IconButton(
         icon: leadingIcon,
         onPressed: () => context.pop(),
