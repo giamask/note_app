@@ -25,7 +25,6 @@ class NoteLocalDataSourceWithHiveImpl implements NoteLocalDataSource {
       await Hive.openBox<NoteHive>(_boxNote);
       return true;
     } catch (_) {
-      print(_);
       throw ConnectionException();
     }
   }

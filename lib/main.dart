@@ -29,13 +29,12 @@ void main() async {
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('app_icon_ns_drawable');
 
-  // final DarwinInitializationSettings initializationSettingsDarwin =
-  //     DarwinInitializationSettings(
-  //         onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+  const DarwinInitializationSettings initializationSettingsDarwin =
+      DarwinInitializationSettings();
 
   const InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-  );
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsDarwin);
 
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
