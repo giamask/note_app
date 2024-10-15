@@ -10,7 +10,7 @@ class LinearProfiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90,
+      height: 110,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -26,7 +26,7 @@ class LinearProfiles extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.all(2),
                     child: CircleAvatar(
-                      radius: 25,
+                      radius: 35,
                       backgroundImage: AssetImage(itemProfileImg),
                     ),
                   ),

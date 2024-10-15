@@ -51,7 +51,7 @@ class AppIcons {
 
   // Empty Notes
   static const emptySearch = Icon(Icons.search, size: 100);
-  static const emptyNote = Icon(Icons.landscape_outlined, size: 150);
+  static Image emptyNote = Image.asset('assets/image/transparent_hedge.png', height: 130,width: 130,);
   static const emptyArchivesNote = Icon(Icons.archive_outlined, size: 150);
   static const emptyTrashNote = Icon(Icons.delete_outline_rounded, size: 150);
 
@@ -59,9 +59,14 @@ class AppIcons {
   static const error = Icon(Icons.error_outline_outlined, size: 150);
 
   static final List<String> profiles = [
-    'assets/image/dog.jpg',
-    'assets/image/elephant.png',
-    'assets/image/rabbit.jpg',
-    'assets/image/hedge_avatar.jpeg',
-  ];
+    'assets/image/calendar17.jpg',
+    'assets/image/calendar18.jpg',
+    'assets/image/calendar19.jpg',
+    'assets/image/calendar20.jpg',
+    'assets/image/calendar21.jpg',
+    'assets/image/calendar22.jpg',
+    'assets/image/calendar23.jpg',
+    'assets/image/calendar24.jpg',
+    'assets/image/calendar25.jpg',
+  ].reversed.toList();
 }

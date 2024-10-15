@@ -17,9 +17,18 @@ class CommonEmptyNotes extends StatelessWidget {
       case DrawerSectionView.home:
         return CommonFixScrolling(
           onRefresh: () => AppFunction.onRefresh(context),
-          child: _emptySection(
-            AppIcons.emptyNote,
-            'Notes you add appear here',
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppIcons.emptyNote,
+                const SizedBox(height: 10.0),
+                const Text(
+                  'Notes you add appear here',
+                  style: TextStyle(color: Colors.black54),
+                ).tr()
+              ],
+            ),
           ),
         );
       case DrawerSectionView.archive:
