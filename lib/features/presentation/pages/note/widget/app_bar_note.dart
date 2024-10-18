@@ -28,10 +28,19 @@ class AppBarNote extends StatelessWidget implements PreferredSizeWidget {
             : [const IconPinnedStatus(), const IconArchiveStatus()];
 
         return AppBar(
-          leading: IconButton(
-            icon: leadingIcon,
-            onPressed: press,
+          leading:  IconButton(
+            icon: const Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+               leadingIcon,
+               SizedBox(width: 5.0,),
+                Text('&'),
+               SizedBox(width: 5.0,),
+                Icon(Icons.save),
+              ],
+            ), onPressed: press,
           ),
+          leadingWidth: 90,
           actions: actions,
         );
       },
