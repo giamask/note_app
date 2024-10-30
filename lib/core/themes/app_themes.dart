@@ -8,7 +8,7 @@ class AppTheme {
 
   static ThemeData light = FlexThemeData.light(
     // colorScheme: AppScheme.flexSchemeLight,
-    scheme: FlexScheme.blumineBlue,
+    scheme: FlexScheme.rosewood,
 
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     appBarOpacity: 0.00,
@@ -25,6 +25,7 @@ class AppTheme {
       fabUseShape: true,
       fabAlwaysCircular: true,
       fabRadius: 21.0,
+      fabSchemeColor: SchemeColor.primary,
       chipRadius: 13.0,
       cardRadius: 15.0,
       alignedDropdown: true,
@@ -45,7 +46,7 @@ class AppTheme {
   static final dark = FlexThemeData.dark(
     //colorScheme: AppScheme.flexSchemeDark,
     // scheme: FlexScheme.ebonyClay,
-    scheme: FlexScheme.green,
+    scheme: FlexScheme.rosewood,
     surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
     appBarOpacity: 0.00,
     blendLevel: 13,

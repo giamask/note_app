@@ -3,7 +3,7 @@ description: A new note app, specialized for scanning your agenda.
 
 publish_to: "none"
 
-version: 1.0.0+4
+version: 1.0.0+5
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -47,7 +47,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: assets\icons\app_icon_ns.png
+  image_path: assets\icons\ns_icon2.png
   min_sdk_android: 21
 
 flutter:

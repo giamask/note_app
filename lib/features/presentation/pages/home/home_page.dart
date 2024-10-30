@@ -78,6 +78,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
+      foregroundColor: const Color.fromARGB(255, 241, 233, 189),
       elevation: 0,
       child: AppIcons.add,
       onPressed: () => context.read<NoteBloc>().add(const GetNoteById('')),
