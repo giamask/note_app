@@ -32,10 +32,7 @@ void main() async {
   );
 
   const DarwinInitializationSettings initializationSettingsDarwin =
-      DarwinInitializationSettings(
-          requestAlertPermission: true,
-          requestSoundPermission: true,
-          requestBadgePermission: true);
+      DarwinInitializationSettings();
 
   const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
