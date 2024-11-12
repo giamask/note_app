@@ -113,48 +113,51 @@ class _NotePageState extends State<NotePage> {
   }
 
   Widget _buildBody() {
-    return SafeArea(
-        child: Scrollbar(
-      child: CustomScrollView(
-        slivers: [
-          SliverGrid(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 0.7,
+    return SafeArea(child: Scrollbar(
+      child:
+          BlocBuilder<PicturesCubit, PicturesState>(builder: (context, state) {
+        return CustomScrollView(
+          slivers: [
+            SliverGrid(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200.0,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 0.7,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return GestureDetector(
+                      onTap: () => context.pushNamed(
+                          AppRouterName.imagePreview.name,
+                          pathParameters: {"noteId": widget.note.id.toString()},
+                          extra: {"index": index.toString()}),
+                      child:
+                          Image(image: FileImage(currentNote.images[index])));
+                },
+                childCount: currentNote.images.length,
+              ),
             ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return GestureDetector(
-                    onTap: () => context.pushNamed(
-                        AppRouterName.imagePreview.name,
-                        pathParameters: {"noteId": widget.note.id.toString()},
-                        extra: {"index": index.toString()}),
-                    child: Image(image: FileImage(currentNote.images[index])));
-              },
-              childCount: currentNote.images.length,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return ReminderChipList(reminders: reminders);
+                },
+                childCount: reminders.isNotEmpty ? 1 : 0,
+              ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return ReminderChipList(reminders: reminders);
-              },
-              childCount: reminders.isNotEmpty ? 1 : 0,
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: TextFieldsForm(
+                controllerTitle: _titleController,
+                controllerContent: _contentController,
+                undoController: _undoController,
+                autofocus: false,
+              ),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: TextFieldsForm(
-              controllerTitle: _titleController,
-              controllerContent: _contentController,
-              undoController: _undoController,
-              autofocus: false,
-            ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     ));
   }
 
