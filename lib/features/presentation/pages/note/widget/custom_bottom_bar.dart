@@ -13,7 +13,6 @@ import 'package:path_provider/path_provider.dart';
 import '../../../../../core/core.dart';
 import '../../../../domain/entities/note.dart';
 import './widgets.dart';
-
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar(
     this.note,
