@@ -27,10 +27,15 @@ void main() async {
       FlutterLocalNotificationsPlugin();
 
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon_ns_drawable');
+      AndroidInitializationSettings(
+    'app_icon_ns_drawable',
+  );
 
   const DarwinInitializationSettings initializationSettingsDarwin =
-      DarwinInitializationSettings();
+      DarwinInitializationSettings(
+          requestAlertPermission: true,
+          requestSoundPermission: true,
+          requestBadgePermission: true);
 
   const InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,

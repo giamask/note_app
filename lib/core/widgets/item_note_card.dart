@@ -7,13 +7,32 @@ import '../../features/domain/entities/note.dart';
 class ItemNoteCard extends StatelessWidget {
   final Note note;
 
-  const ItemNoteCard({super.key, required this.note});
+  late final bool hasActiveNotifications;
+
+  ItemNoteCard({super.key, required this.note}) {
+    final hasNotifications = note.reminders.isNotEmpty;
+
+    hasActiveNotifications = hasNotifications &&
+        note.reminders.any((r) {
+          return r.dateTime.isAfter(DateTime.now());
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
+        trailing: hasActiveNotifications
+            ? const Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Icon(Icons.notifications_active),
+                ],
+              )
+            : null,
         title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Text(

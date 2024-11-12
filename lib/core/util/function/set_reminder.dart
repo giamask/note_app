@@ -10,8 +10,15 @@ Future<void> setReminder(dynamic flutterLocalNotificationsPlugin, int id,
       body ?? '',
       tz.TZDateTime.from(date, tz.local),
       const NotificationDetails(
-          android: AndroidNotificationDetails('channel id', 'channel name',
-              channelDescription: 'description')),
+          android: AndroidNotificationDetails(
+            'channel id',
+            'channel name',
+            channelDescription: 'description',
+            playSound: true,
+            importance: Importance.max,
+            priority: Priority.high,
+          ),
+          iOS: DarwinNotificationDetails(presentSound: true)),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime);
