@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:note_app/features/domain/entities/reminder.dart';
 import 'package:note_app/features/presentation/blocs/blocs.dart';
 import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
+import 'package:note_app/features/presentation/pages/note/widget/camera_icon_note.dart';
 import 'package:note_app/features/presentation/pages/note/widget/reminder_note.dart';
 import 'package:note_app/features/presentation/pages/note/widget/scan_doc_icon_note.dart';
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
@@ -13,6 +15,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../../../../core/core.dart';
 import '../../../../domain/entities/note.dart';
 import './widgets.dart';
+
 class CustomBottomBar extends StatefulWidget {
   const CustomBottomBar(
     this.note,
@@ -28,7 +31,7 @@ class CustomBottomBar extends StatefulWidget {
 
 class _CustomBottomBarState extends State<CustomBottomBar> {
   bool isShowUndoRedo = false;
-
+  final ImagePicker _picker = ImagePicker();
   @override
   void initState() {
     _loadListenerUndo();
@@ -80,6 +83,31 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                 }
               },
             ),
+            CameraIconNote(press: () async {
+              try {
+                final XFile? image =
+                    await _picker.pickImage(source: ImageSource.camera);
+                if (image == null) return;
+
+                // Get the app's documents directory
+                final Directory appDir =
+                    await getApplicationDocumentsDirectory();
+
+                // Create a unique filename
+                final String fileName =
+                    '${DateTime.now().millisecondsSinceEpoch}.jpg';
+                final File savedImage = File('${appDir.path}/$fileName');
+
+                // Save the image to the app's directory
+                final newFile = await File(image.path).copy(savedImage.path);
+
+                if (newFile.existsSync() && context.mounted) {
+                  context.read<PicturesCubit>().addPicture(newFile);
+                }
+              } catch (_) {
+                throw NoDataException();
+              }
+            }),
             ReminderNote(
               press: () async {
                 final newReminderDatetime = await showDateTimePicker(
