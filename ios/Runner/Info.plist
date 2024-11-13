@@ -34,6 +34,10 @@
 		<string>Main</string>
 		<key>NSCameraUsageDescription</key>
 		<string>We need access to the camera to take photos.</string>
+        <key>UIFileSharingEnabled</key>
+        <true/>
+        <key>LSSupportsOpeningDocumentsInPlace</key>
+        <true/>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>We need access to your photo library to save photos.</string>
 		<key>UISupportedInterfaceOrientations</key>
