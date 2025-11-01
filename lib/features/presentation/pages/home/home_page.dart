@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
               drawerSection: DrawerSectionView.home,
               otherNotes: state.otherNotes,
               pinnedNotes: state.pinnedNotes,
-              decorativeImage: 'assets/image/transparent_hedge.png',
+              decorativeImage: 'assets/image/ox_bg.png',
             ),
           );
         }
@@ -78,10 +78,11 @@ class HomePage extends StatelessWidget {
 
   Widget _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
-      foregroundColor: const Color.fromARGB(255, 241, 233, 189),
+      foregroundColor: const Color.fromARGB(255, 247, 247, 247),
       elevation: 0,
-      child: AppIcons.add,
       onPressed: () => context.read<NoteBloc>().add(const GetNoteById('')),
+      backgroundColor: Colors.black,
+      child: AppIcons.add,
     );
   }
 }

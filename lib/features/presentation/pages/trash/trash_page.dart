@@ -35,7 +35,7 @@ Widget _buildBody(BuildContext context) {
           drawerSection: DrawerSectionView.trash,
           otherNotes: state.otherNotes,
           pinnedNotes: const [],
-          decorativeImage: 'assets/image/transparent_hedge.png',
+          decorativeImage: 'assets/image/ox_bg.png',
         );
       }
       return const SizedBox.shrink();

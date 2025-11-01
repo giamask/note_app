@@ -64,25 +64,27 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               press: () => _showModalBottomSheet(
                   sheetPopoverType: SheetPopover.coloring),
             ),
-            ScanDocIconNote(
-              press: () async {
-                try {
-                  final imagePath = await CunningDocumentScanner.getPictures();
-                  if (imagePath?.isEmpty ?? true) return;
-                  final cacheFile = File(imagePath!.first);
-                  final appDir = await getApplicationDocumentsDirectory();
+            if (Platform.isAndroid)
+              ScanDocIconNote(
+                press: () async {
+                  try {
+                    final imagePath =
+                        await CunningDocumentScanner.getPictures();
+                    if (imagePath?.isEmpty ?? true) return;
+                    final cacheFile = File(imagePath!.first);
+                    final appDir = await getApplicationDocumentsDirectory();
 
-                  final newFile = await cacheFile.copy(
-                      "${appDir.path}/${cacheFile.uri.pathSegments.last}");
-                  await cacheFile.delete();
-                  if (newFile.existsSync() && context.mounted) {
-                    context.read<PicturesCubit>().addPicture(newFile);
+                    final newFile = await cacheFile.copy(
+                        "${appDir.path}/${cacheFile.uri.pathSegments.last}");
+                    await cacheFile.delete();
+                    if (newFile.existsSync() && context.mounted) {
+                      context.read<PicturesCubit>().addPicture(newFile);
+                    }
+                  } catch (_) {
+                    throw NoDataException();
                   }
-                } catch (_) {
-                  throw NoDataException();
-                }
-              },
-            ),
+                },
+              ),
             CameraIconNote(press: () async {
               try {
                 final XFile? image =

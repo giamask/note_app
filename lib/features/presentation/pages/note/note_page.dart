@@ -167,6 +167,8 @@ class _NotePageState extends State<NotePage> {
   }
 
   void _displaylistener(BuildContext context, NoteState state) {
-    if (state is GoPopNoteState) context.pop();
+    if (context.canPop() && (state is GoPopNoteState)) {
+      context.pop();
+    }
   }
 }

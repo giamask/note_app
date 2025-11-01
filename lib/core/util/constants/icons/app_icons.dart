@@ -51,7 +51,7 @@ class AppIcons {
 
   // Empty Notes
   static const emptySearch = Icon(Icons.search, size: 100);
-  static Image emptyNote = Image.asset('assets/image/transparent_hedge.png', height: 130,width: 130,);
+  static Image emptyNote = Image.asset('assets/image/ox_bg.png', height: 130,width: 130,);
   static const emptyArchivesNote = Icon(Icons.archive_outlined, size: 150);
   static const emptyTrashNote = Icon(Icons.delete_outline_rounded, size: 150);
 
@@ -68,5 +68,6 @@ class AppIcons {
     'assets/image/calendar23.jpg',
     'assets/image/calendar24.jpg',
     'assets/image/calendar25.jpg',
+    'assets/image/calendar26.jpg',
   ].reversed.toList();
 }
