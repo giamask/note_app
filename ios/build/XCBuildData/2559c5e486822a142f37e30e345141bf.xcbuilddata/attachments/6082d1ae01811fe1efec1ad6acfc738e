@@ -1,0 +1,5 @@
+ extern const unsigned char cunning_document_scannerVersionString[];
+ extern const double cunning_document_scannerVersionNumber;
+
+ const unsigned char cunning_document_scannerVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:cunning_document_scanner  PROJECT:Pods-1" "\n";
+ const double cunning_document_scannerVersionNumber __attribute__ ((used)) = (double)1.;

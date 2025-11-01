@@ -1,0 +1,5 @@
+
+module cunning_document_scanner.Swift {
+  header "cunning_document_scanner-Swift.h"
+  requires objc
+}

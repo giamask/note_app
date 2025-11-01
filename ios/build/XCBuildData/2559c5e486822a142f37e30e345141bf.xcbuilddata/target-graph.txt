@@ -1,0 +1,40 @@
+Target dependency graph (16 targets)
+Target 'Pods-RunnerTests' in project 'Pods'
+➜ Explicit dependency on target 'Pods-Runner' in project 'Pods'
+Target 'Pods-Runner' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'cunning_document_scanner' in project 'Pods'
+➜ Explicit dependency on target 'flutter_local_notifications' in project 'Pods'
+➜ Explicit dependency on target 'flutter_timezone' in project 'Pods'
+➜ Explicit dependency on target 'image_picker_ios' in project 'Pods'
+➜ Explicit dependency on target 'path_provider_foundation' in project 'Pods'
+➜ Explicit dependency on target 'permission_handler_apple' in project 'Pods'
+➜ Explicit dependency on target 'share_plus' in project 'Pods'
+➜ Explicit dependency on target 'shared_preferences_foundation' in project 'Pods'
+Target 'shared_preferences_foundation' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'shared_preferences_foundation-shared_preferences_foundation_privacy' in project 'Pods'
+Target 'shared_preferences_foundation-shared_preferences_foundation_privacy' in project 'Pods' (no dependencies)
+Target 'share_plus' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'share_plus-share_plus_privacy' in project 'Pods'
+Target 'share_plus-share_plus_privacy' in project 'Pods' (no dependencies)
+Target 'permission_handler_apple' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'permission_handler_apple-permission_handler_apple_privacy' in project 'Pods'
+Target 'permission_handler_apple-permission_handler_apple_privacy' in project 'Pods' (no dependencies)
+Target 'path_provider_foundation' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+Target 'image_picker_ios' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'image_picker_ios-image_picker_ios_privacy' in project 'Pods'
+Target 'image_picker_ios-image_picker_ios_privacy' in project 'Pods' (no dependencies)
+Target 'flutter_timezone' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+Target 'flutter_local_notifications' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'flutter_local_notifications-flutter_local_notifications_privacy' in project 'Pods'
+Target 'flutter_local_notifications-flutter_local_notifications_privacy' in project 'Pods' (no dependencies)
+Target 'cunning_document_scanner' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+Target 'Flutter' in project 'Pods' (no dependencies)

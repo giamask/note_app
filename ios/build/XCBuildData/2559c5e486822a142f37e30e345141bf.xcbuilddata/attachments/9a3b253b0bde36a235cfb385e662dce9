@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master.swiftconstvalues",
+    "dependencies" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master.d",
+    "diagnostics" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master.dia",
+    "emit-module-dependencies" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master-emit-module.dia",
+    "swift-dependencies" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/cunning_document_scanner-master.swiftdeps"
+  },
+  "/Users/m1/.pub-cache/hosted/pub.dev/cunning_document_scanner-1.2.3/ios/Classes/SwiftCunningDocumentScannerPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/SwiftCunningDocumentScannerPlugin.o",
+    "llvm-bc" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/SwiftCunningDocumentScannerPlugin.bc",
+    "object" : "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/Objects-normal/arm64/SwiftCunningDocumentScannerPlugin.o"
+  }
+}

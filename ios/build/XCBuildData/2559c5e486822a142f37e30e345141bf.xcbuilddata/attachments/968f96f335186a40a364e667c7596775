@@ -1,0 +1,4 @@
+
+module cunning_document_scanner.__Swift {
+  exclude header "cunning_document_scanner-Swift.h"
+}

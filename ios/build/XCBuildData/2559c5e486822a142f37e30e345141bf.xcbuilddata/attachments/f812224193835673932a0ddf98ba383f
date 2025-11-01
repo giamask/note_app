@@ -1,0 +1,23 @@
+{
+  "version": 0,
+  "use-external-names": false,
+  "case-sensitive": false,
+  "roots": [{
+    "type": "directory",
+    "name": "/Users/m1/Desktop/note_app/ios/build/Release-iphoneos/cunning_document_scanner/cunning_document_scanner.framework/Modules",
+    "contents": [{
+      "type": "file",
+      "name": "module.modulemap",
+      "external-contents": "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    "type": "directory",
+    "name": "/Users/m1/Desktop/note_app/ios/build/Release-iphoneos/cunning_document_scanner/cunning_document_scanner.framework/Headers",
+    "contents": [{
+      "type": "file",
+      "name": "cunning_document_scanner-Swift.h",
+      "external-contents": "/Users/m1/Desktop/note_app/ios/build/Pods.build/Release-iphoneos/cunning_document_scanner.build/unextended-interface-header.h",
+    }]
+  }]
+}
