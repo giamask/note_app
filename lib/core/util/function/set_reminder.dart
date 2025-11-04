@@ -11,13 +11,12 @@ Future<void> setReminder(dynamic flutterLocalNotificationsPlugin, int id,
       tz.TZDateTime.from(date, tz.local),
       const NotificationDetails(
           android: AndroidNotificationDetails(
-            'channel id',
-            'channel name',
+            'remindersv2',
+            'reminders',
             channelDescription: 'description',
             playSound: true,
             importance: Importance.max,
             priority: Priority.high,
-            sound: RawResourceAndroidNotificationSound('notif'),
             audioAttributesUsage: AudioAttributesUsage.notification,
           ),
           iOS: DarwinNotificationDetails(
