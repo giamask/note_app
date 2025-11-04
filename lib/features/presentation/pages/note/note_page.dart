@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/core/util/function/stale_path_resolver.dart';
 import 'package:note_app/features/domain/entities/reminder.dart';
 import 'package:note_app/features/presentation/blocs/pictures/pictures_cubit.dart';
 import 'package:note_app/features/presentation/pages/note/widget/reminder_chip_list.dart';
@@ -116,6 +119,15 @@ class _NotePageState extends State<NotePage> {
     return SafeArea(child: Scrollbar(
       child:
           BlocBuilder<PicturesCubit, PicturesState>(builder: (context, state) {
+        //hack to display correct pics
+        final pictureFiles = state.files;
+        final repaired = <File>[];
+        for (final f in pictureFiles) {
+          final fixed = resolveStalePath(f.path);
+          if (fixed != null) {
+            repaired.add(fixed);
+          }
+        }
         return CustomScrollView(
           slivers: [
             SliverGrid(
@@ -133,7 +145,7 @@ class _NotePageState extends State<NotePage> {
                           pathParameters: {"noteId": widget.note.id.toString()},
                           extra: {"index": index.toString()}),
                       child:
-                          Image(image: FileImage(currentNote.images[index])));
+                          Image(image: FileImage(repaired[index])));
                 },
                 childCount: currentNote.images.length,
               ),

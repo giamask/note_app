@@ -87,13 +87,10 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               ),
             CameraIconNote(press: () async {
               try {
+                final appDir = await getApplicationDocumentsDirectory();
                 final XFile? image =
                     await _picker.pickImage(source: ImageSource.camera);
                 if (image == null) return;
-
-                // Get the app's documents directory
-                final Directory appDir =
-                    await getApplicationDocumentsDirectory();
 
                 // Create a unique filename
                 final String fileName =
